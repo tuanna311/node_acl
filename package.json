@@ -1,0 +1,13 @@
+{
+  "name": "ticket_acl",
+  "version": "1.0.0",
+  "description": "VCC",
+  "main": "index.js",
+  "author": "tuanna",
+  "license": "MIT",
+  "dependencies": {
+    "acl": "^0.4.11",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.16"
+  }
+}
