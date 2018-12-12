@@ -1,10 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-
-app.get('/', (req, res) => res.send('Hello World!'));
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+var acl = require('acl');
 
 var url = "mongodb://localhost:27017/ticket_acl";
 
@@ -14,6 +11,19 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
     console.log("connected");
+    acl = new acl(new acl.mongodbBackend(db.db, 'acl_'));
+    
 });
-var acl = require('acl');
-acl = new acl(new acl.mongodbBackend(db, 'acl_'));
+
+
+
+app.get('/', (req, res) => res.send('Hello World!'));
+
+app.get('/acl', function(req, res) {
+    acl.allow('admin', 'blogs', 'create')
+});
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+
+//acl.allow('guest', 'blogs', 'view');
