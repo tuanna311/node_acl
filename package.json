@@ -5,9 +5,15 @@
   "main": "index.js",
   "author": "tuanna",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon ./src/index.js"
+  },
   "dependencies": {
     "acl": "^0.4.11",
     "express": "^4.16.4",
     "mongoose": "^5.3.16"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.8"
   }
 }
